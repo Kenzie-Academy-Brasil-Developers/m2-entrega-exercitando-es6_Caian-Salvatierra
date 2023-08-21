@@ -26,15 +26,14 @@ const sellBook = (bookList, bookId, userType = 'normal') => {
        return 'Livro indisponível para compra.' 
         } else{
             const discount = userTypeDiscount[userType];
-            const price = book.price *(1 - discount/100);
-
+            const price = book.price - (book.price * discount);
             book.quantity--;
 
-                return `Livro ${book.title} vendido com sucesso por R$ ${price.toFixed(2)} (${discount}%) de desconto.`
+                return `Livro ${book.title} vendido com sucesso por R$ ${price.toFixed(2)} (${discount * 100}%) de desconto.`
      }
 
 }
-console.log(sellBook(bookStoreBooks, 8, "platinum"));
+console.log(sellBook(bookStoreBooks, 1, "platinum"));
 
 
 
